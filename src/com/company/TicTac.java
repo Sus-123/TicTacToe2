@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class TicTac {
     private boolean player1 = true;
     private boolean player2 = true;
-    private  boolean gameover = false ;
+    private  boolean gameOver = false ;
     private final int size ;
     Scanner sc = new Scanner(System.in);
 
@@ -16,7 +16,7 @@ public class TicTac {
     public void play()
     {
         game obj = new game(size);
-        while(!gameover)
+        while(!gameOver)
         {
             if(player1){
                 System.out.println("Player1 , enter your X and Y position");
@@ -27,7 +27,7 @@ public class TicTac {
                     int res = obj.move(1, x, y);
                     if(res != 0) {
                         System.out.println("Player1 won the match");
-                        gameover = true ;
+                        gameOver = true ;
                         break ;
                     }
                     player1 = false;
@@ -46,7 +46,7 @@ public class TicTac {
                     int res = obj.move(0, x, y);
                     if(res != 0) {
                         System.out.println("Player2 won the match");
-                        gameover = true ;
+                        gameOver = true ;
                         break ;
                     }
                     player2 = false;
