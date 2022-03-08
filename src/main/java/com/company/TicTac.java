@@ -1,5 +1,9 @@
 package com.company;
+import Constants.Constants;
+
 import java.util.Scanner;
+
+//import static Constants.Constants.lowerCoordinate;
 
 public class TicTac {
     private boolean player1 = true;
@@ -8,27 +12,28 @@ public class TicTac {
     private final int size ;
     Scanner sc = new Scanner(System.in);
 
-    TicTac(){
-        System.out.println("Enter size of board : ");
-        size = sc.nextInt();
+    public TicTac(int size ){
+        this.size = size;
     }
 
-    public void play()
+    public int play()
     {
         game obj = new game(size);
+        //Constants constants = new Constants();
+        System.out.println(Constants.lowerCoordinate);
         while(!gameOver)
         {
             if(player1){
                 System.out.println("Player1 , enter your X and Y position");
                 int x= sc.nextInt();
+
                 //System.out.println("Player1 , enter your Y position");
                 int y= sc.nextInt();
                 try{
                     int res = obj.move(1, x, y);
                     if(res != 0) {
                         System.out.println("Player1 won the match");
-                        gameOver = true ;
-                        break ;
+                        return 1;
                     }
                     player1 = false;
                     player2 = true ;
@@ -46,8 +51,7 @@ public class TicTac {
                     int res = obj.move(0, x, y);
                     if(res != 0) {
                         System.out.println("Player2 won the match");
-                        gameOver = true ;
-                        break ;
+                        return 2;
                     }
                     player2 = false;
                     player1 = true ;
@@ -57,5 +61,11 @@ public class TicTac {
                 }
             }
         }
+        return 0;
     }
+
+    public void playedGame () {
+        System.out.println("Played with spring!");
+    }
+
 }
